@@ -447,3 +447,154 @@ reStyle(0);
 </script>
 </body>
 </html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CSS Assignment</title>
+</head>
+
+<body>
+<h1>Assignment: HTML &amp; Cascading Style Sheets</h1>
+<p><em>(This is a modification of <a href="http://web.stanford.edu/class/cs193c/assignments/assign1.pdf">an assignment</a> by Patrick Young, at Stanford Univ.)</em></p>
+<p>For this assignment do not use WYSIWYG editors (e.g., no Dreamweaver). Webpages should be laid out using CSS floats (no HTML tables or CSS absolute positioning). You will be submitting several files to the drop box for this assignment. Several resources (images, text, etc.) are provided in a zip file, referenced <a href="#providedResources">at the bottom of this page</a>.<br />
+</p>
+<p>Make sure your files validate at:<br />
+  <a href="http://validator.w3.org/">http://validator.w3.org/</a> (for HTML)<br />
+  <a href="http://jigsaw.w3.org/css-validator">http://jigsaw.w3.org/css-validator (for CSS)</a><br />
+</p>
+<p>Your files should work on  the latest version of Mozilla Firefox.</p>
+<h2>Part 1: A CSS'd Personal Page (12 points)</h2>
+<p>Create a simple personal web page, <tt>personal.html</tt>, that contains at least the following items:</p>
+<ol>
+  <li>Your name at the top of the page as an &lt;h1&gt; heading.<br />
+  <li>A few paragraphs about yourself. Be sure to include the word Eastern at least twice in your paragraphs—we’ll need that for the next problem in this assignment.<br />
+  <li>A list of hobbies or interest displayed as an HTML unordered list.<br />
+<li>Link at least two of your hobbies or interests to websites related to those interests.</ol>
+<p>Here’s roughly what the webpage should look like:
+</p>
+<p><img src="personalPageNoCSS.jpg" alt="Example of your personal page, not yet using CSS" width="477" height="376" /></p>
+<p>Stick to semantic HTML only. (Semantic HTML are those tags that do not specify appearance directly, such as the <tt>&lt;i&gt;</tt> and <tt>&lt;b&gt;</tt> tags.) We’ll spice it up with some CSS in the next part of this assignment. You can find a list of HTML elements commonly considered semantic HTML here:<br />
+</p>
+<blockquote>
+  <p><tt><a href="http://microformats.org/wiki/semantic-html">http://microformats.org/wiki/semantic-html</a></tt><br />
+  </p>
+</blockquote>
+<p>Feel free to add in some additional items to your personal website if you’d like, but there is a more open-ended opportunity to be creative later in the assignment.<br />
+</p>
+<p>Make sure your webpage validates (see the links at the top of this page). Save your file under the name <tt>personal.html</tt>. If you've not validated a document before, it's very simple. I suggest using the &quot;upload&quot; option, as your html file isn't on a web server yet, and so doesn't have a URL that you can provide to the validators.</p>
+<p>Now add a CSS file called <tt>personal.css</tt> and reference it in your <tt>.html</tt> file. </p>
+<p>Make the following changes and additions:
+<ul>
+  <li>Add a photograph of yourself and float it to the left side of the webpage using CSS. Add box information (margin, padding, and/or border) to make it look nice on the webpage.<br />
+  <li>Change the font used throughout the document to sans-serif. To do this you can set the font for the <tt>body</tt> element, which will be inherited by all elements contained within the body (which is everything displayed on the webpage). Alternatively, you can create a style rule with the special universal selector which is represented by the asterisk. The universal selector matches any element, however it’s not very efficient and will slow rendering of your page down a bit. For example, the following rule will turn everything on the webpage to red:<br />
+<pre>  * {
+  color: red;
+  }</pre>
+  <li>Center the heading with your name in it.<br />
+  <li>Setup your links to use the “<tt>:hover</tt>” pseudo-class (use <tt>a:hover</tt> so that only the links are effected). How the link changes when the mouse moves on top of it is up to you, but if you’re short on ideas, just have the link change colors.<br />
+  <li>Add <tt>&lt;span&gt;</tt> tags and setup your style sheet so that every time the word “Eastern” appears, it is in green and is in bold.</ul>
+<p>Here’s a sample screenshot (in the screenshot &quot;Stanford&quot; is in red, but we want to use &quot;Eastern&quot; in green, instead). Make sure your webpage validates without errors through both the HTML and CSS validators.
+</p>
+  </p>
+<p><img src="personalPageWithCSS.jpg" alt="Example personsal web page, using CSS" width="560" height="474" /></p>
+<p><strong>Submit your <tt>personal.html</tt> and <tt>personal.css</tt> files to the dropbox for this assignment.</strong></p>
+<h2>Part 2: Zebra Striping (8 points)</h2>
+<p>In a zebra-striped table, every other row is a different color. In this problem you’ll create a simple zebra-striped table using data on the Stanford undergraduate population. For this problem save your HTML file under the name <tt>zebra.html</tt>, and put your CSS directly into the HTML file using the <tt>&lt;style&gt;</tt> tag. Here is what your webpage should look like:</p>
+<p><img src="zebraStripes.jpg" alt="Example table that uses zebra striping" width="541" height="445" /></p>
+<p>Your solution needs to display the following characteristics:<br />
+<ul>
+  <li>The “Geographic Origin of Stanford Undergrads” heading and the Stanford Facts Website citation at the bottom are in the default serif font, whereas the table itself is in sans-serif.<br />
+  <li>The table header row is white text on a black background.<br />
+  <li>There is a thin white border separating the “Geographic Origin” cell from the “Number of Students” cell in the table header row.<br />
+  <li>Odd-numbered rows (other than the black table header row) have a light gray background whereas even-numbered rows have a white background.<br />
+  <li>All table cells (except those in the header) have a 1 pixel solid black border around them.<br />
+  <li>The Stanford Facts citation at the bottom should be in italics (but don’t use the <tt>&lt;i&gt;</tt> italics tag for this, that’s not semantic HTML).
+</ul>
+  Here are a few implementation pointers.
+<ul> 
+  <li>You’ll need to use the <tt>border-collapse</tt> property on the table, otherwise all your table cells will end up with double borders.<br />
+  <li>I used the color <tt>#EEE</tt> for my light gray background.<br />
+  <li>For my implementation I created classes for the odd rows and for the last row, but you’re welcome to implement it differently with the following limitation: <em>there is a fancy <tt>:nth</tt> CSS3 style selector that makes zebra-stripping easy – however, I do not want you to use this</em>. You should get some practice using the <tt>class</tt> attribute which will be generally useful for a wide range of tasks. If you ever need to zebra stripe a table on a real website, the <tt>:nth</tt> selector is a fine choice.
+</ul>
+<p><strong>Submit your <tt>zebra.html</tt>  file to the dropbox for this assignment.</strong></p>
+<h2>Part 3: An Example Blog (20 points)</h2>
+<p>For this problem, modify the file <a href="blog.html">blog.html</a> to use document-level stylesheets so that it is formatted nicely. The document already includes a number of <tt>class</tt> attributes. You'll need to provide a style for each class attribute. This is your opportunity to get creative on this assignment. Here are the minimum requirements for full credit on this part of the assignment:
+<ul>
+  <li>Provide styling on the header and add in the <a href="Emu_seal.GIF">Eastern Seal</a>  using an <tt>&lt;img&gt;</tt> tag with appropriate accompanying CSS to make the seal an appropriate size.
+  <li>Make sure that each blog entry is appropriately distinguished, so that a viewer can easily tell where each blog entry starts and stops.<br />
+  <li>Add styling to each entry heading and each entry footer.<br />
+  <li>Make your sample blog page look good!
+</ul>
+<p>I’ll be giving up to 3 bonus points for nicely styled blogs. I'll show the top 1-2 blogs in class. I’ve provided <a href="memchu.jpg">a jpeg of the Memorial Church</a> before the earthquake (from Stanford University Archives) in case you want to add it to your page.
+</p>
+<p><strong>Submit your <tt>blog.html</tt> file to the dropbox for this assignment.</strong></p>
+<h2>Part 4: Two Column Layout</h2>
+<p>Create following two-column webpage (the text are excerpts from the <em>Stanford Report</em>) using CSS float layout:</p>
+<p><img src="twoColumn.jpg" alt="Example of two column layout" width="578" height="340" /></p>
+<p>Save the file as <tt>two-column.html</tt>. Each column should be 400 pixels with 15 pixel margins. Use a font with serifs. <a href="report-text.txt">The actual text</a> is provided with this assignment’s downloads so you don’t have to type it in. This section will not be graded, so you do not need to submit this file.</p>
+<h2>Part 5: Four Column Layout</h2>
+<p>Reproduce the following four-column webpage (consisting of headlines from the Stanford Report) using CSS float layout:</p>
+<p><img src="fourColumn.jpg" alt="Example of a four-column layout" width="578" height="165" /></p>
+<p>Save it under the name <tt>four-column.html</tt>. Your webpage does not have to look exactly like mine, but it should contain four-columns, each column should be 200 pixels wide with 10 pixel margins. Use a font without serifs. This section will not be graded, and you do not need to submit this file.</p>
+<h2> Part 6: Combined Webpage (10 points)</h2>
+  <p>Combine the last two parts of this assignment into a new file called <tt>combined.html</tt>. Here’s what your combined webpage should look like:
+  </p>
+  <p><img src="combinedColumns.jpg" alt="Example layout with two columns on top half, and four columns on bottom" width="564" height="374" /></p>
+  <p><strong>Submit your <tt>combined.html</tt> to the dropbox.</strong></p>
+  <h2><strong>Part 7: Organizational Web Page</strong> (25 points)</h2>
+  <p>In this part of the assignment we will create a web page, organization.html, containing several layout components, including a header and navigational field.</p>
+  <p><img src="organizationalPage.jpg" alt="Web page showing multiple layout components" width="582" height="377" /></p>
+  <p>The <a href="bing-text.txt">Bing Concert Hall text</a> is an excerpt from the actual Bing Concert Hall website (binghall.stanford.edu) and, along with <a href="bing.jpg">the Bing Concert Hall image file</a>, is provided as part of the homework downloads, so you don’t need to type it in.
+  <p>
+    Your page doesn't need to be exactly as shown. If your measurements are different or your margins are a bit off or your fonts are a different size, you’ll still receive full credit. But the overall placement of items should be the same. Make sure you have the following features:</p>
+    <ul>
+    <li>A masthead across the top with “Stanford Performing Arts” on the left and “Autumn 2012 Edition” on the right, right-justified with “Edition” below “Autumn 2012.”<br />
+    <li>The main article section on the left with the text floating around the image as shown.<br />
+    <li>Calendar section on the right, with performing arts events listed below, with lines between the events plus an additional line between the Calendar heading and the first event and a line below the last event as shown. Use style sheets to create these lines, not the <tt>&lt;hr /&gt;</tt> tag.</ul>
+   <p> Here are some of the specific measurements used to generate the example web page. Again, you can use different values, so long as the layout is approximately the same.</p>
+<ul>
+    <li>“Stanford Performing Arts” color #cc0000, 36 point bold, sans-serif<br />
+    <li>“Autumn 2012 Edition” color # cc0000, 12pt bold<br />
+    <li>“Bing Concert Hall” 18pt, bold, sans-serif<br />
+    <li>“Calendar” 14pt, bold, sans-serif<br />
+    <li>Calendar items 12pt, italic, sans-serif<br />
+    <li>Article text is default font.<br />
+    <li>Overall Width 800px;<br />
+    <li>Article Column Width: 500px;<br />
+    <li>Calendar Column Width: 300px;
+</ul>
+<p> If you use the <tt>&lt;h1&gt;</tt>, <tt>&lt;h2&gt;</tt>, and <tt>&lt;h3&gt;</tt> tags to create your headings (which is recommended), you’ll need to override the standard margins otherwise you headings will take up too much space. This is commonly done on professional webpages. In fact, many professionals use a “CSS Reset” with their webpages, which resets all the margin and padding on all HTML elements to <tt>0px</tt>.</p>
+ <p><strong>Submit your <tt>organization.html</tt>, along with any image files you reference therein.</strong></p>
+ <h2>Part 8: &quot;Facebook&quot; Page (25 points)</h2>
+ <p>Create the following “Facebook-like” webpage, <tt>facebook.html</tt>. Here’s what the webpage should look like:</p>
+ <p><img src="facebook.jpg" alt="A web page that looks somewhat like what we might find on Facebook, or another social media site." width="613" height="398" /></p>
+ <p>The webpage consists of a photo, some information about the person, and a set of &quot;status updates&quot;. On the right, using form elements, the user is able to enter  new updates, which will be added to the status updates shown in the center.
+ <p>
+   You don’t have to make a page for the dog Molly, you can substitute your own information, but don’t spend too much time thinking about this, we're only interested in the webpage layout, not its contents. Also if you enter your own material, make sure it stays at the PG-level or below – I will not grade any R- or X-rated websites.
+<p>
+   While you do not need a pixel-perfect implementation you should include the following:</p>
+<ul>
+   <li>The &quot;Stanford Connection&quot; banner that runs across the top of the left two columns (but not across the “Post Updates” column.<br />
+   <li>As seen in the screenshot the banner should have <a href="tree-logo.gif">the Stanford Logo</a>, which is included with the assignments’s downloads. Note that the  “Stanford Connection” in the header is text, not part of a graphic image, and it should remain text. You should not create any new graphics files. The color in the logo is <tt>#9A0000</tt>.<br />
+   <li>A column on the left consisting of a picture, followed by information about the user.<br />
+   <li>Two sections below the picture, one for “About Me” and one for “Friends”.<br />
+   <li>Titles in the “About Me” section like “Birthday” should be bolded, while actual values such as December 8, 2001 are not bolded. Friends’ names are bolded.<br />
+   <li>Each of the sections “About Me”, “Friends”, “Status Updates”, and “Post Updates” should have a colored background – the color in the example is <tt>#CC9191</tt>. They should also have a 2-pixel black border on the top and bottom but no border on the sides.<br />
+   <li>Status updates should be separated by thin lines as shown.<br />
+   <li>The right column should include a “Post Updates” heading, a text area, and a submission button.<br />
+  <li>Leave a reasonable amount of space between columns.   
+   <li>As we haven't yet discussed how to execute programs with our webpages, the button, “Submit New Update”, won’t actually do anything. 
+   </ul>
+<p><strong>Submit your facebook.html to the dropbox, along with any image files it references.</strong></p>
+<h2><a name="providedResources" id="providedResources">Provided Resources</a></h2>
+<p>
+   The following files are provided with the assignment download, <a href="assign1Resources.zip">assign1Resources.zip</a>:
+<ul>
+   <li><tt>blog.html</tt> is an enhanced version of the HTML file from class. You’ll need to add your own<tt> &lt;style&gt;</tt> tag (or a <tt>&lt;link&gt;</tt> tag and an external file) for the assignment. As previously noted, I’ve also provided you with a Eastern Logo (<tt>Emu_seal.GIF</tt>) and a photo of Memorial Church from the Stanford University Archives in case you want to add a picture to your blog.<br />
+  <li><tt>report-text.txt</tt> (unformatted text) for the 2-column/4-column Combined Web Page problem.<br />
+  <li><tt>bing.jpg</tt> and <tt>bing-text.txt</tt> (unformatted text) for the Organizational Web Page problem.<br />
+ <li><tt>tree-logo.gif</tt> and <tt>molly.jpg</tt> for the Stanford Connection webpage.
+</ul>
+</body>
+</html>
