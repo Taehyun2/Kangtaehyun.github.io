@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>놀이공원 입장권 계산</title>
+    <style>
+        table { border-collapse: collapse; }
+        table, th, td { border: 1px solid black; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>놀이공원 입장권 계산</h2>
+    <form method="post" action="">
+        <label for="customer_name">고객성명: </label>
+        <input type="text" id="customer_name" name="customer_name" required>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>구분</th>
+                <th>어린이</th>
+                <th>어른</th>
+                <th>비고</th>
+                <th>수량</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>입장권</td>
+                <td>7,000</td>
+                <td>10,000</td>
+                <td>입장</td>
+                <td>
+                    어린이: <input type="number" name="entry_child" value="0" min="0">
+                    어른: <input type="number" name="entry_adult" value="0" min="0">
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>BIG3</td>
+                <td>12,000</td>
+                <td>15,000</td>
+                <td>입장+놀이3종</td>
+                <td>
+                    어린이: <input type="number" name="big3_child" value="0" min="0">
+                    어른: <input type="number" name="big3_adult" value="0" min="0">
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>자유이용권</td>
+                <td>21,000</td>
+                <td>28,000</td>
+                <td>입장+놀이자유</td>
+                <td>
+                    어린이: <input type="number" name="freepass_child" value="0" min="0">
+                    어른: <input type="number" name="freepass_adult" value="0" min="0">
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>연간이용권</td>
+                <td>70,000</td>
+                <td>90,000</td>
+                <td>입장+놀이자유</td>
+                <td>
+                    어린이: <input type="number" name="annualpass_child" value="0" min="0">
+                    어른: <input type="number" name="annualpass_adult" value="0" min="0">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">합계</button>
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        date_default_timezone_set('Asia/Seoul'); // 서울 시간대로 설정
+        $current_time = date("Y년 m월 d일 H:i분");
+        
+        $customer_name = htmlspecialchars($_POST['customer_name']); // 특수문자 변환
+        $entry_child = $_POST['entry_child'];
+        $entry_adult = $_POST['entry_adult'];
+        $big3_child = $_POST['big3_child'];
+        $big3_adult = $_POST['big3_adult'];
+        $freepass_child = $_POST['freepass_child'];
+        $freepass_adult = $_POST['freepass_adult'];
+        $annualpass_child = $_POST['annualpass_child'];
+        $annualpass_adult = $_POST['annualpass_adult'];
+
+        $total = ($entry_child * 7000) + ($entry_adult * 10000) +
+                 ($big3_child * 12000) + ($big3_adult * 15000) +
+                 ($freepass_child * 21000) + ($freepass_adult * 28000) +
+                 ($annualpass_child * 70000) + ($annualpass_adult * 90000);
+
+        echo "<p>{$current_time}</p>";
+        echo "<p>{$customer_name} 고객님 감사합니다.</p>";
+        if ($entry_child > 0) {
+            echo "<p>어린이 입장권 {$entry_child}매</p>";
+        }
+        if ($entry_adult > 0) {
+            echo "<p>어른 입장권 {$entry_adult}매</p>";
+        }
+        if ($big3_child > 0) {
+            echo "<p>어린이 BIG3 {$big3_child}매</p>";
+        }
+        if ($big3_adult > 0) {
+            echo "<p>어른 BIG3 {$big3_adult}매</p>";
+        }
+        if ($freepass_child > 0) {
+            echo "<p>어린이 자유이용권 {$freepass_child}매</p>";
+        }
+        if ($freepass_adult > 0) {
+            echo "<p>어른 자유이용권 {$freepass_adult}매</p>";
+        }
+        if ($annualpass_child > 0) {
+            echo "<p>어린이 연간이용권 {$annualpass_child}매</p>";
+        }
+        if ($annualpass_adult > 0) {
+            echo "<p>어른 연간이용권 {$annualpass_adult}매</p>";
+        }
+        echo "<p>합계 {$total}원입니다.</p>";
+    }
+    ?>
+</body>
+</html>
